@@ -1,0 +1,13 @@
+@import '@angular/material/theming'; //Importação para cores.
+@include mat-core();
+
+$custom-app-primary: mat-palette($mat-brown); //Variáveis de definição de cores primárias e secundárias abaixo.
+$custom-app-secondary: mat-palette($mat-indigo, A200, A400, 700);
+$custom-app-warn: mat-palette($mat-brown);
+
+$custom-theme: mat-light-theme($custom-app-primary, $custom-app-secondary, $custom-app-warn); //Tema
+
+@include angular-material-theme($custom-theme); //Aplico o tema.
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

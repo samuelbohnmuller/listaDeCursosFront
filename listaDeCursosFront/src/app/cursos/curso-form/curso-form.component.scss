@@ -1,0 +1,20 @@
+.full-width{ //100% da largura do formulário. Cada campo ocupa todo formulário e não fica do lado do outro.
+  width: 100%
+}
+
+mat-card{ //Sobescrevo o mat-card já existente do angular.
+  max-width: 80%; //Pega 80% da tela
+  margin: 2em auto; //Margem 2x o padrão do lado esquerdo para o centro.
+  text-align: center;
+}
+
+.boao-no-centro{ //100% da largura do formulário. Cada campo ocupa todo formulário e não fica do lado do outro.
+  display: block;
+  margin: 0 auto;
+}
+
+.margem-botao{
+  margin-right: 5px;
+}
+
+

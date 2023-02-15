@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar color="primary" class="title">Lista de cursos</mat-toolbar>
+
+    <div class="column-flex mat-elevation-z8">
+
+    <!--ngIf se escreve no observable e extrai as informações colocando em nova variável cursos. Se cursos$ for vazio ou estiver demorando muito, motrará o template loading.-->
+    <!--Os eventos de @output colocados no componente filho(lista-cursos-component = filho), como adicionar, chamam eventos(métodos) do componente pai(cursoComponent = pai) -->
+    <app-lista-cursos
+      *ngIf="cursos$ | async as cursos; else loading"
+      [cursos]="cursos"
+      (adicionar)="adicionaCurso()"
+      (editar)="editarCurso($event)"
+      (deletar)="removerCurso($event)"> <!--Passo as informações da variável cursos acima e passo para variável cursos de input do componente ListaCursosComponent.-->
+    </app-lista-cursos> <!--Escuto o evento de adicionaCurso e outros pelo atributo de Output adicionar(e outros abaixo), que chama o método para navegar(e outroa) para próxima rota(ou outro método). adicionar pega um evento de click, que é disparado quando clicabo no botão de + e o evento disparado chama método que emite. $event pega o valor emitido passado no emit do output.-->
+
+    <ng-template #loading> <!--Crio novo template aqui.-->
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner> <!--Progresso da requisição.-->
+      </div>
+    </ng-template>
+    </div>
+  </mat-card-content>
+
+</mat-card>

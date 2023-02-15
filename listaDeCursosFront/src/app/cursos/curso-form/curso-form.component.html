@@ -1,0 +1,30 @@
+<mat-card >
+  <mat-card-content>
+    <form [formGroup]="form" class="full-width"> <!--formGroup asocia o formulário a um componente.-->
+      <mat-toolbar color="primary">Detalhes do Curso</mat-toolbar>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nome" formControlName="name" #inputName required/> <!--name é o atributo que se asocia a variável de mesmo nome do componente-->
+        <mat-hint align="end">{{inputName.value?.length || 0}}/100</mat-hint> <!--Contador de caracteres.-->
+        <mat-error *ngIf="form.get('name')?.invalid">{{erroMensagem("name")}}</mat-error> <!--O ? é para caso for nulo o campo. Pega validações do campo name.-->
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="category">
+          <mat-option value="null"></mat-option> <!--Opção vazia de seleção.-->
+          <mat-option value="Front-end">Front-end</mat-option>
+          <mat-option value="Back-end">Back-end</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('category')?.invalid">{{erroMensagem("category")}}</mat-error>
+      </mat-form-field>
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions class="boao-no-centro">
+    <button mat-raised-button color="primary" class="margem-botao" (click)="salvarCurso()" [disabled]="form.get('name')?.invalid">Salvar</button>
+    <button mat-raised-button (click)="cancelar()">Cancelar</button>
+  </mat-card-actions>
+
+
+</mat-card>

@@ -1,0 +1,36 @@
+<mat-table [dataSource]="cursos">
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell  *matHeaderCellDef class="category-header">Nome do Curso</mat-header-cell>
+    <mat-cell *matCellDef="let nomeCurso">{{ nomeCurso.name }}</mat-cell>  <!--nomeCurso é uma variável que será iterada por um ngFor interno que mostrará a propriedade name da interface de cara curso no array.-->
+  </ng-container>
+
+  <ng-container matColumnDef="category">
+    <mat-header-cell *matHeaderCellDef class="category-header">Categoria</mat-header-cell>
+    <mat-cell *matCellDef="let categoria">{{ categoria.category }}
+      <mat-icon aria-hidden="false" aria-label="Categoria do curso">{{ categoria.category | category}}</mat-icon> <!--Insiro um ícone depois do nome da categoria.-->
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes"> <!--Nome da coluna que será pega pelo componente para ser mostrada.-->
+    <mat-header-cell *matHeaderCellDef class="action-column-header mat-header-cell"> <!--Defino o cabeçalho.-->
+      <button (click)="adicionarCurso()" mat-mini-fab color="accent" aria-label="Adicionar curso" >
+        <mat-icon>add</mat-icon> <!--Botão add, de + .-->
+      </button>
+    </mat-header-cell>
+
+
+    <mat-cell *matCellDef="let curso" class=" action-column mat-header-cell"> <!--Corpo que itera sobre cada categoria, mostrando ícone.-->
+      <button (click)="editarCurso(curso)" mat-icon-button color="primary" aria-label="Editar curso"> <!--Passo o objeto inteiro para pegar o id dele na chamada do método.-->
+        <mat-icon>edit</mat-icon> <!--Botão de editar do Material.-->
+      </button>
+
+      <button (click)="removerCurso(curso)" mat-icon-button color="warn" aria-label="Remover curso">
+        <mat-icon>delete</mat-icon> <!--Botão de editar do Material.-->
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="listaDeColunas"></mat-header-row> <!--Especifico quais as colunas(propriedades) estarão sendo mostradas.-->
+  <mat-row *matRowDef="let row; columns: listaDeColunas"></mat-row> <!--Itera sobre cada coluna indicada na variável-->
+</mat-table>

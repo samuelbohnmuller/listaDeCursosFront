@@ -1,0 +1,31 @@
+
+
+.loading-spinner{
+  padding: 25px;
+  background: rgba($color: #f3efef, $alpha: 1.0);
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.mat-header-cell {
+  border-bottom: none;
+}
+
+.button[mat-mini-fab] {
+  margin-top: 10px;
+}
+
+mat-card{
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.column-flex{
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+
